@@ -1,6 +1,6 @@
 --[[---------------------------------------------------------------------------------
-  MyACEPercentage - Originally by Instant.  Upgraded to Ace3 (ManaPerc) by phyber
-------------------------------------------------------------------------------------]]
+-  ManaPerc: Originally MyACEPercentage by Instant                                  -
+-----------------------------------------------------------------------------------]]
 ManaPerc = LibStub("AceAddon-3.0"):NewAddon("ManaPerc", "AceHook-3.0", "AceConsole-3.0")
 local ManaPerc, self = ManaPerc, ManaPerc
 -- Default options
