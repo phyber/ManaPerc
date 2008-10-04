@@ -1,0 +1,16 @@
+## Interface: 20400
+## Title: ManaPerc
+## Notes: Shows mana usage as a percentage in a spells tooltip.
+## Notes-zhTW: 在法術提示訊息顯示施放法力值百分比。
+## Notes-zhCN: 在提示信息中以百分比的形式显示法术需要消耗的法力值。
+## Author: phyber
+## OptionalDeps: Ace3, LibDruidMana-1.0
+## SavedVariables: ManaPercDB
+## X-Website: http://svn.wowace.com/files/
+## X-Category: Interface Enhancements
+## X-Credit: Instant (original author)
+## X-Embeds: Ace3, LibDruidMana-1.0
+
+embeds.xml
+Locales\locales.xml
+ManaPerc.lua

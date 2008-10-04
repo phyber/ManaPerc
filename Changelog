@@ -1,0 +1,831 @@
+------------------------------------------------------------------------
+r70599 | phyber | 2008-04-20 16:36:21 +0100 (Sun, 20 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Add hecking for cost and ptype being nil due to funky stuff when mouseovering Talents.
+------------------------------------------------------------------------
+r70583 | yleaf | 2008-04-20 11:30:52 +0100 (Sun, 20 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/ManaPerc/Locales/zhCN.lua
+   M /trunk/ManaPerc/Locales/zhTW.lua
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+zhCN & zhTW update
+Maybe you could use GetAddOnMetadata to get addon title and discription from .toc file like the locale files I updated. For the error i've sent you a pm on forums.wowace.com.
+------------------------------------------------------------------------
+r70446 | phyber | 2008-04-19 12:05:29 +0100 (Sat, 19 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Infact, remove that check entirely.  If someone can show me a spell that causes cost or ptype to be nil, I'll add it back in.  But protip, this function is called OnTooltipSetSpell, we should never get something that isn't a spell and those fields are '' for things like 'Attack', not nil.
+------------------------------------------------------------------------
+r70441 | phyber | 2008-04-19 11:47:17 +0100 (Sat, 19 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Fix somebody elses broken fix.
+------------------------------------------------------------------------
+r70035 | yleaf | 2008-04-16 11:50:24 +0100 (Wed, 16 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc: Fixed a nil error Bug
+------------------------------------------------------------------------
+r69800 | phyber | 2008-04-14 23:33:07 +0100 (Mon, 14 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Get rid of redundant tonumber.
+------------------------------------------------------------------------
+r69747 | phyber | 2008-04-14 19:22:43 +0100 (Mon, 14 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Use :GetSpell() and :GetSpellInfo() to get the spell costs now instead of scanning the tooltips.
+------------------------------------------------------------------------
+r69584 | phyber | 2008-04-13 18:31:22 +0100 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/embeds.xml
+
+ManaPerc:
+- libs -> Libs
+------------------------------------------------------------------------
+r69579 | phyber | 2008-04-13 18:15:52 +0100 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/Locales/enUS.lua
+   M /trunk/ManaPerc/Locales/zhCN.lua
+   M /trunk/ManaPerc/Locales/zhTW.lua
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Add a description to the options screen and make the layout a little nicer.
+------------------------------------------------------------------------
+r69572 | phyber | 2008-04-13 17:56:18 +0100 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/Libs
+   M /trunk/ManaPerc/Locales/enUS.lua
+   M /trunk/ManaPerc/Locales/zhCN.lua
+   M /trunk/ManaPerc/Locales/zhTW.lua
+   M /trunk/ManaPerc/ManaPerc.lua
+   M /trunk/ManaPerc/ManaPerc.toc
+   M /trunk/ManaPerc/embeds.xml
+
+ManaPerc:
+- Now using Ace3.
+------------------------------------------------------------------------
+r66418 | phyber | 2008-03-27 17:05:51 +0000 (Thu, 27 Mar 2008) | 2 lines
+Changed paths:
+   A /trunk/ManaPerc/Locales/locales.xml
+
+ManaPerc:
+- Yes, so like, actually add the file that loads the translations.
+------------------------------------------------------------------------
+r66374 | phyber | 2008-03-27 12:45:58 +0000 (Thu, 27 Mar 2008) | 2 lines
+Changed paths:
+   D /trunk/ManaPerc/Locales/ManaPercLocale-enUS.lua
+   D /trunk/ManaPerc/Locales/ManaPercLocale-zhCN.lua
+   D /trunk/ManaPerc/Locales/ManaPercLocale-zhTW.lua
+   A /trunk/ManaPerc/Locales/enUS.lua (from /trunk/ManaPerc/Locales/ManaPercLocale-enUS.lua:66373)
+   A /trunk/ManaPerc/Locales/zhCN.lua (from /trunk/ManaPerc/Locales/ManaPercLocale-zhCN.lua:66373)
+   A /trunk/ManaPerc/Locales/zhTW.lua (from /trunk/ManaPerc/Locales/ManaPercLocale-zhTW.lua:66373)
+
+ManaPerc:
+- Rename the locale files.
+------------------------------------------------------------------------
+r66373 | phyber | 2008-03-27 12:43:43 +0000 (Thu, 27 Mar 2008) | 3 lines
+Changed paths:
+   A /trunk/ManaPerc/Locales
+   A /trunk/ManaPerc/Locales/ManaPercLocale-enUS.lua (from /trunk/ManaPerc/ManaPercLocale-enUS.lua:66371)
+   A /trunk/ManaPerc/Locales/ManaPercLocale-zhCN.lua (from /trunk/ManaPerc/ManaPercLocale-zhCN.lua:66371)
+   A /trunk/ManaPerc/Locales/ManaPercLocale-zhTW.lua (from /trunk/ManaPerc/ManaPercLocale-zhTW.lua:66371)
+   M /trunk/ManaPerc/ManaPerc.toc
+   D /trunk/ManaPerc/ManaPercLocale-enUS.lua
+   D /trunk/ManaPerc/ManaPercLocale-zhCN.lua
+   D /trunk/ManaPerc/ManaPercLocale-zhTW.lua
+
+ManaPerc:
+- Update TOC for 2.4.
+- Move localizations into Locales directory.
+------------------------------------------------------------------------
+r56108 | phyber | 2007-11-27 08:43:50 +0000 (Tue, 27 Nov 2007) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- TOC -> 20300
+------------------------------------------------------------------------
+r54212 | yleaf | 2007-11-09 15:57:36 +0000 (Fri, 09 Nov 2007) | 1 line
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+   A /trunk/ManaPerc/ManaPercLocale-zhCN.lua
+
+ManaPerc: add zhCN localization
+------------------------------------------------------------------------
+r53557 | helium | 2007-10-31 04:21:17 +0000 (Wed, 31 Oct 2007) | 3 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+   M /trunk/ManaPerc/ManaPerc.toc
+   M /trunk/ManaPerc/ManaPercLocale-enUS.lua
+   A /trunk/ManaPerc/ManaPercLocale-zhTW.lua
+   A /trunk/ManaPerc/embeds.xml
+
+ManaPerc:
+- use embeds.xml
+- added zhTW localization
+------------------------------------------------------------------------
+r50031 | phyber | 2007-09-27 09:42:56 +0100 (Thu, 27 Sep 2007) | 1 line
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc: TOC -> 20200
+------------------------------------------------------------------------
+r45623 | phyber | 2007-08-03 11:27:12 +0100 (Fri, 03 Aug 2007) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Slight change to option table.
+------------------------------------------------------------------------
+r45602 | phyber | 2007-08-02 23:14:17 +0100 (Thu, 02 Aug 2007) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- MORE DOTS.  Something is getting upset without them, although the Mana Percentages were still being shown
+------------------------------------------------------------------------
+r45600 | phyber | 2007-08-02 22:35:52 +0100 (Thu, 02 Aug 2007) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Removed two instances of ..., saving precious bytes on peoples hard drives.
+------------------------------------------------------------------------
+r45599 | phyber | 2007-08-02 22:29:39 +0100 (Thu, 02 Aug 2007) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- It works again.
+------------------------------------------------------------------------
+r42502 | phyber | 2007-07-02 16:27:27 +0100 (Mon, 02 Jul 2007) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Try hooking OnTooltipSetSpell instead of OnShow to add mana percentages to spells
+------------------------------------------------------------------------
+r38938 | phyber | 2007-06-07 18:05:56 +0100 (Thu, 07 Jun 2007) | 3 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Made a few Lua functions local.
+- Added a space before the percentages.  '350 Mana(50%)'  v.s '350 Mana (50%)'
+------------------------------------------------------------------------
+r38313 | phyber | 2007-06-03 20:54:50 +0100 (Sun, 03 Jun 2007) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- Correct AceHook-2.1 path in TOC.
+------------------------------------------------------------------------
+r36341 | phyber | 2007-05-22 10:58:39 +0100 (Tue, 22 May 2007) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- TOC update to 20100
+------------------------------------------------------------------------
+r25428 | phyber | 2007-01-17 02:42:37 +0000 (Wed, 17 Jan 2007) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- Update TOC
+------------------------------------------------------------------------
+r19595 | phyber | 2006-12-08 16:13:05 +0000 (Fri, 08 Dec 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- Added note about instant in his X-Credit entry, mainly just to update the zip
+------------------------------------------------------------------------
+r18427 | phyber | 2006-11-30 18:35:42 +0000 (Thu, 30 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- TOC 20000
+------------------------------------------------------------------------
+r18262 | phyber | 2006-11-28 14:23:51 +0000 (Tue, 28 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Try to fix 'arithmetic on nil value' error that happened in some weird cases.
+------------------------------------------------------------------------
+r17307 | phyber | 2006-11-17 19:17:30 +0000 (Fri, 17 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- No need to call the original script.
+------------------------------------------------------------------------
+r16479 | phyber | 2006-11-09 15:16:42 +0000 (Thu, 09 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- TOC--
+------------------------------------------------------------------------
+r16472 | phyber | 2006-11-09 14:44:39 +0000 (Thu, 09 Nov 2006) | 3 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- Bumped TOC to 20000.
+- Removed empty :OnDisable() function.
+------------------------------------------------------------------------
+r15229 | phyber | 2006-10-26 15:56:36 +0100 (Thu, 26 Oct 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/Libs
+   M /trunk/ManaPerc/ManaPerc.lua
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- Updated to AceHook-2.1
+------------------------------------------------------------------------
+r14359 | phyber | 2006-10-19 04:44:58 +0100 (Thu, 19 Oct 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/Libs
+
+ManaPerc:
+- ManaPerc now deep breaths more with these externals.
+------------------------------------------------------------------------
+r14356 | phyber | 2006-10-19 04:42:53 +0100 (Thu, 19 Oct 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+   M /trunk/ManaPerc/ManaPerc.toc
+   M /trunk/ManaPerc/ManaPercLocale-enUS.lua
+
+ManaPerc:
+- Upgraded to ManaPerc.
+------------------------------------------------------------------------
+r12749 | kergoth | 2006-10-03 03:19:17 +0100 (Tue, 03 Oct 2006) | 1 line
+Changed paths:
+   M /trunk/LensOfTruth/LensOfTruth.lua
+   M /trunk/LensOfTruth/LensOfTruth.toc
+   M /trunk/Lern2Spell/Lern2Spell.lua
+   M /trunk/Lern2Spell/Lern2Spell.toc
+   M /trunk/Lern2Spell/Tooltip.xml
+   M /trunk/Lexan/Changelog.txt
+   M /trunk/Lexan/GPL.txt
+   M /trunk/Lexan/Lexan.lua
+   M /trunk/Lexan/Lexan.toc
+   M /trunk/Lexan/Readme.txt
+   M /trunk/LitheTooltipDoctor/Core.lua
+   M /trunk/LitheTooltipDoctor/License.txt
+   M /trunk/LitheTooltipDoctor/LitheTooltipDoctor.toc
+   M /trunk/LitheTooltipDoctor/Locale-enUS.lua
+   M /trunk/LostKeys/LostKeys.lua
+   M /trunk/LostKeys/LostKeys.toc
+   M /trunk/LuaProfiler/LuaProfiler.lua
+   M /trunk/LuaProfiler/LuaProfiler.toc
+   M /trunk/LuaProfiler/LuaProfiler.xml
+   M /trunk/LucenUnitFrames/LucenUnitFrames.lua
+   M /trunk/LucenUnitFrames/LucenUnitFrames.toc
+   M /trunk/LucenUnitFrames/LucenUnitFrames.xml
+   M /trunk/LucenUnitFrames/LucenUnitFramesLocals.lua
+   M /trunk/LucenUnitFrames/Readme.txt
+   M /trunk/MASH/MASH.lua
+   M /trunk/MASH/MASH.toc
+   M /trunk/MASH/Needs/HealNeed.lua
+   M /trunk/MASH/Needs/Need.lua
+   M /trunk/MASH/Needs/SelfHeal.lua
+   M /trunk/MASH/Player.lua
+   M /trunk/MASH/Triage.lua
+   M /trunk/MASH/Utils.lua
+   M /trunk/MASH/localization.lua
+   M /trunk/MSBTLoot/MSBTLoot.toc
+   M /trunk/MSBTLoot/core.lua
+   M /trunk/MSBTLoot/libs/SEEmbedBags/SEEmbedBags.lua
+   M /trunk/MailTip/MailTip.lua
+   M /trunk/MailTip/MailTip.toc
+   M /trunk/MailTip/MailTip.xml
+   M /trunk/MailTip/MailTipLocals.deDE.lua
+   M /trunk/MailTip/MailTipLocals.frFR.lua
+   M /trunk/MailTip/MailTipLocals.lua
+   M /trunk/ManaPerc/ManaPerc.lua
+   M /trunk/ManaPerc/ManaPerc.toc
+   M /trunk/ManaPerc/ManaPercLocale-enUS.lua
+   M /trunk/ManaPerc/Readme.txt
+   M /trunk/Mendeleev/CompostLib.lua
+   M /trunk/Mendeleev/Locals/MendeleevLocalsdeDE.lua
+   M /trunk/Mendeleev/Locals/MendeleevLocalsfrFR.lua
+   M /trunk/Mendeleev/Locals/MendeleevLocalszhCN.lua
+   M /trunk/Mendeleev/Mendeleev.lua
+   M /trunk/Mendeleev/Mendeleev.toc
+   M /trunk/Mendeleev/MendeleevCats.lua
+   M /trunk/Mendeleev/MendeleevCmd.lua
+   M /trunk/Mendeleev/MendeleevGlobals.lua
+   M /trunk/MessageEvent/MessageEvent.lua
+   M /trunk/MessageEvent/MessageEvent.toc
+   M /trunk/Metrognome/Lib/MetrognomeLib.lua
+   M /trunk/Metrognome/Metrognome-2.0/Metrognome-2.0.lua
+   M /trunk/Metrognome/Metrognome.toc
+   M /trunk/MicroAssist/Bindings.xml
+   M /trunk/MicroAssist/MicroAssist.toc
+   M /trunk/MicroAssist/README.TXT
+   M /trunk/MicroAssist/elements/class.lua
+   M /trunk/MicroAssist/fini.lua
+   M /trunk/MicroAssist/init.lua
+   M /trunk/MicroAssist/test.lua
+   M /trunk/MiniBlizzRaid/MiniBlizzRaid.lua
+   M /trunk/MiniBlizzRaid/MiniBlizzRaid.toc
+   M /trunk/MiniBlizzRaid/MiniBlizzRaid.xml
+   M /trunk/MobHealth/MobHealth.toc
+   M /trunk/MobHealth/MobHealth3.lua
+   M /trunk/MobHealth/changelog.txt
+   M /trunk/MobHealth/readme.txt
+   M /trunk/MobHealth3_BlizzardFrames/MH3_Blizzard.lua
+   M /trunk/MobHealth3_BlizzardFrames/MobHealth3_BlizzardFrames.toc
+   M /trunk/MobHealth3_BlizzardFrames/changelog.txt
+   M /trunk/MountMe/Bindings.xml
+   M /trunk/MountMe/Core.lua
+   M /trunk/MountMe/EzDismount.lua
+   M /trunk/MountMe/FuBarInterface.lua
+   M /trunk/MountMe/ItemSwap.lua
+   M /trunk/MountMe/Locale_enUS.lua
+   M /trunk/MountMe/MountMe.toc
+   M /trunk/MrPlow/Bindings.xml
+   M /trunk/MrPlow/Localization_deDE.lua
+   M /trunk/MrPlow/Localization_frFR.lua
+   M /trunk/MrPlow/MrPlow.lua
+   M /trunk/MrPlow/MrPlow.toc
+   M /trunk/MrPlow/MrPlowFu.lua
+   M /trunk/MyBags/Bindings.xml
+   M /trunk/MyBags/ChangeLog.txt
+   M /trunk/MyBags/MyBags.toc
+   M /trunk/MyBags/MyBagsCore/MyBags.lua
+   M /trunk/MyBags/MyBagsCore/MyBags.xml
+   M /trunk/MyBags/MyBagsCore/locals.lua
+   M /trunk/MyBags/MyBank/MyBank.lua
+   M /trunk/MyBags/MyBank/MyBank.toc
+   M /trunk/MyBags/MyBank/MyBank.xml
+   M /trunk/MyBags/MyBank/locals.lua
+   M /trunk/MyBags/MyEquipment/MyEquipment.lua
+   M /trunk/MyBags/MyEquipment/MyEquipment.toc
+   M /trunk/MyBags/MyEquipment/MyEquipment.xml
+   M /trunk/MyBags/MyEquipment/locals.lua
+   M /trunk/MyBags/MyInventory/MyInventory.lua
+   M /trunk/MyBags/MyInventory/MyInventory.toc
+   M /trunk/MyBags/MyInventory/MyInventory.xml
+   M /trunk/MyBags/MyInventory/locals.lua
+   M /trunk/MyBags/ReadMe.txt
+   M /trunk/MyBagsCache/MyBagsCache.lua
+   M /trunk/MyBagsCache/MyBagsCache.toc
+   M /trunk/MyBagsCache/MyBagsCache.xml
+   M /trunk/NanoStats/Changelog.txt
+   M /trunk/NanoStats/NanoStats.lua
+   M /trunk/NanoStats/NanoStats.toc
+   M /trunk/NanoStats/NanoStatsLocals.lua
+   M /trunk/NanoStats/Readme.txt
+   M /trunk/Necronomicon/Bindings.xml
+   M /trunk/Necronomicon/Necronomicon.lua
+   M /trunk/Necronomicon/Necronomicon.toc
+   M /trunk/Necronomicon/Necronomicon.xml
+   M /trunk/Necronomicon/NecronomiconLocals.lua
+   M /trunk/Necronomicon/NecronomiconLocals_deDE.lua
+   M /trunk/Necronomicon/NecronomiconLocals_frFR.lua
+   M /trunk/Necronomicon/NecronomiconLocals_koKR.lua
+   M /trunk/Necronomicon/Readme.txt
+   M /trunk/Nudge/Nudge-enUS.lua
+   M /trunk/Nudge/Nudge.lua
+   M /trunk/Nudge/Nudge.toc
+   M /trunk/OneBag/OneBag.lua
+   M /trunk/OneBag/OneBag.toc
+   M /trunk/OneBag/OneBag.xml
+   M /trunk/OneBag/OneCore.lua
+   M /trunk/OneBag/localizations/OneCore.lua
+   M /trunk/OneBag/localizations/deDE.lua
+   M /trunk/OneBag/localizations/enUS.lua
+   M /trunk/OneBag/localizations/frFR.lua
+   M /trunk/OneBag/localizations/koKR.lua
+   M /trunk/OneBag/localizations/locals.xml
+   M /trunk/OneBag/localizations/nbNO.lua
+   M /trunk/OneBag/localizations/zhCN.lua
+   M /trunk/OneBag/readme.txt
+   M /trunk/OneBag/templates.xml
+   M /trunk/OneBank/OneBank.lua
+   M /trunk/OneBank/OneBank.toc
+   M /trunk/OneBank/OneBank.xml
+   M /trunk/OneBank/locals.lua
+   M /trunk/OneBank/readme.txt
+   M /trunk/OneRing/OneRing.lua
+   M /trunk/OneRing/OneRing.toc
+   M /trunk/OneRing/OneRing.xml
+   M /trunk/OneRing/locals.lua
+   M /trunk/OneRing/readme.txt
+   M /trunk/OneStorage/OneStorage-2.0/OneStorage-2.0.lua
+   M /trunk/OneStorage/OneStorage.toc
+   M /trunk/OneView/OneButton.lua
+   M /trunk/OneView/OneView.lua
+   M /trunk/OneView/OneView.toc
+   M /trunk/OneView/OneView.xml
+   M /trunk/OneView/bindings.xml
+   M /trunk/OneView/locals.lua
+   M /trunk/OneView/readme.txt
+   M /trunk/Overlord/Overlord.lua
+   M /trunk/Overlord/Overlord.toc
+   M /trunk/PaintBall/Bindings.xml
+   M /trunk/PaintBall/PaintBall.lua
+   M /trunk/PaintBall/PaintBall.toc
+   M /trunk/PaintChipsLib/PaintChips-2.0/PaintChips-2.0.lua
+   M /trunk/PaintChipsLib/PaintChipsLib.toc
+   M /trunk/Paparazzi/Bindings.xml
+   M /trunk/Paparazzi/Paparazzi-deDE.lua
+   M /trunk/Paparazzi/Paparazzi-enUS.lua
+   M /trunk/Paparazzi/Paparazzi.lua
+   M /trunk/Paparazzi/Paparazzi.toc
+   M /trunk/ParserLib/ParserLib-1.1/ParserLib.lua
+   M /trunk/ParserLib/ParserLib-1.1/optimizer-enUS.lua
+   M /trunk/ParserLib/ParserLib-1.1/readme.txt
+   M /trunk/ParserLib/ParserLib.toc
+   M /trunk/ParserLib/changes.txt
+   M /trunk/PartyQuestComm/Locale.lua
+   M /trunk/PartyQuestComm/PartyQuestComm.lua
+   M /trunk/PartyQuestComm/PartyQuestComm.toc
+   M /trunk/PerfectRaid/Bindings.xml
+   M /trunk/PerfectRaid/Localisation.lua
+   M /trunk/PerfectRaid/PerfectRaid.lua
+   M /trunk/PerfectRaid/PerfectRaid.toc
+   M /trunk/PerfectRaid/PerfectRaidConfig.lua
+   M /trunk/PerfectRaid/PerfectRaidOptions.lua
+   M /trunk/PerfectRaid/RaidSimulation.lua
+   M /trunk/PerfectTargets/Core.lua
+   M /trunk/PerfectTargets/PerfectTargets.toc
+   M /trunk/PerfectTargets/TargetFrame.lua
+   M /trunk/PerfectTooltip/PerfectTooltip.lua
+   M /trunk/PerfectTooltip/PerfectTooltip.toc
+   M /trunk/PeriodicMenu/Core.lua
+   M /trunk/PeriodicMenu/PeriodicMenu.toc
+   M /trunk/PeriodicTable/Compatability.lua
+   M /trunk/PeriodicTable/Core/PTEmbed.lua
+   M /trunk/PeriodicTable/Elements/AQ/PTEmbedElemAhnQiraj.lua
+   M /trunk/PeriodicTable/Elements/EquipSets/PTEmbedElemEquipSets.lua
+   M /trunk/PeriodicTable/Elements/Food/PTEmbedElemFood.lua
+   M /trunk/PeriodicTable/Elements/Instance/PTEmbedElemInstance.lua
+   M /trunk/PeriodicTable/Elements/Misc/PTEmbedElemMisc.lua
+   M /trunk/PeriodicTable/Elements/Raid/PTEmbedElemRaid.lua
+   M /trunk/PeriodicTable/Elements/Tradeskills/PTEmbedElemTradeskill.lua
+   M /trunk/PeriodicTable/Elements/ZG/PTEmbedElemZulGurub.lua
+   M /trunk/PeriodicTable/FeedomaticPlugin.lua
+   M /trunk/PeriodicTable/PeriodicTable.toc
+   M /trunk/PeriodicTable/Tradeskills/PTTradeskillsEmbed.lua
+   M /trunk/PeriodicTable_DataMiner/ParseMob.lua
+   M /trunk/PinPoint/Collect/Fishing.lua
+   M /trunk/PinPoint/Collect/Herbalism.lua
+   M /trunk/PinPoint/Collect/Manual.lua
+   M /trunk/PinPoint/Collect/Mining.lua
+   M /trunk/PinPoint/Core.lua
+   M /trunk/PinPoint/Display/MiniMap.lua
+   M /trunk/PinPoint/Display/WorldMap.lua
+   M /trunk/PinPoint/PinPoint.toc
+   M /trunk/PingPong/PingPong.lua
+   M /trunk/PingPong/PingPong.toc
+   M /trunk/PlayerMenu/Locale.lua
+   M /trunk/PlayerMenu/Locale.zhcn.lua
+   M /trunk/PlayerMenu/PlayerMenu.lua
+   M /trunk/PlayerMenu/PlayerMenu.toc
+   M /trunk/PlowKing/Bindings.xml
+   M /trunk/PlowKing/Libs/StickyFrames/StickyFrames.lua
+   M /trunk/PlowKing/Libs/StickyFrames/StickyFrames.toc
+   M /trunk/PlowKing/Libs/StickyFrames/StickyFrames.xml
+   M /trunk/PlowKing/PlowKing.lua
+   M /trunk/PlowKing/PlowKing.toc
+   M /trunk/PlowKing/PlowKingBagSection.lua
+   M /trunk/PlowKing/PlowKingBagSlot.lua
+   M /trunk/PlowKing/PlowKingCategory.lua
+   M /trunk/PlowKing/PlowKingItem.lua
+   M /trunk/PlowKing/PlowKingLayout.lua
+   M /trunk/PlowKing/PlowKingLocals.lua
+   M /trunk/PlowKing/PlowKingMath.lua
+   M /trunk/PlowKing/PlowKingTag.lua
+   M /trunk/PotHead/Pothead.lua
+   M /trunk/PotHead/Pothead.toc
+   M /trunk/Prat/Core.lua
+   M /trunk/Prat/Prat.toc
+   M /trunk/Prat_Buttons/Prat_Buttons.lua
+   M /trunk/Prat_Buttons/Prat_Buttons.toc
+   M /trunk/Prat_ChannelNames/Prat_ChannelNames.lua
+   M /trunk/Prat_ChannelNames/Prat_ChannelNames.toc
+   M /trunk/Prat_ChatLink/Prat_ChatLink.lua
+   M /trunk/Prat_ChatLink/Prat_ChatLink.toc
+   M /trunk/Prat_Editbox/Prat_Editbox.lua
+   M /trunk/Prat_Editbox/Prat_Editbox.toc
+   M /trunk/Prat_EditboxArrows/Prat_EditboxArrows.lua
+   M /trunk/Prat_EditboxArrows/Prat_EditboxArrows.toc
+   M /trunk/Prat_Fading/Prat_Fading.lua
+   M /trunk/Prat_Fading/Prat_Fading.toc
+   M /trunk/Prat_FontSize/Prat_FontSize.lua
+   M /trunk/Prat_FontSize/Prat_FontSize.toc
+   M /trunk/Prat_FuBar2/Prat_FuBar2.lua
+   M /trunk/Prat_FuBar2/Prat_FuBar2.toc
+   M /trunk/Prat_Justify/Prat_Justify.lua
+   M /trunk/Prat_Justify/Prat_Justify.toc
+   M /trunk/Prat_PlayerNames/Prat_PlayerNames.lua
+   M /trunk/Prat_PlayerNames/Prat_PlayerNames.toc
+   M /trunk/Prat_Scroll/Prat_Scroll.lua
+   M /trunk/Prat_Scroll/Prat_Scroll.toc
+   M /trunk/Prat_StickyChannels/Prat_StickyChannels.lua
+   M /trunk/Prat_StickyChannels/Prat_StickyChannels.toc
+   M /trunk/Prat_TellTarget/Prat_TellTarget.lua
+   M /trunk/Prat_TellTarget/Prat_TellTarget.toc
+   M /trunk/Prat_Timestamps/Prat_Timestamps.lua
+   M /trunk/Prat_Timestamps/Prat_Timestamps.toc
+   M /trunk/Prat_UrlCopy/Prat_UrlCopy.lua
+   M /trunk/Prat_UrlCopy/Prat_UrlCopy.toc
+   M /trunk/Prat_Who/Frame.xml
+   M /trunk/Prat_Who/Prat_Who.lua
+   M /trunk/Prat_Who/Prat_Who.toc
+   M /trunk/ProximityLib/Lib/ProximityLib.lua
+   M /trunk/ProximityLib/ProximityLib.toc
+   M /trunk/Pubcrawl/Bindings.xml
+   M /trunk/Pubcrawl/Pubcrawl.lua
+   M /trunk/Pubcrawl/Pubcrawl.toc
+   M /trunk/lern2count/Default/Default_Buttons.lua
+   M /trunk/lern2count/lern2count.lua
+   M /trunk/lern2count/lern2count.toc
+   M /trunk/lern2count_plugins/lern2count_bongos/lern2count_bongos.lua
+   M /trunk/lern2count_plugins/lern2count_bongos/lern2count_bongos.toc
+   M /trunk/lern2count_plugins/lern2count_ida/lern2count_ida.lua
+   M /trunk/lern2count_plugins/lern2count_ida/lern2count_ida.toc
+   M /trunk/lern2count_plugins/lern2count_nurfed/lern2count_nurfed.lua
+   M /trunk/lern2count_plugins/lern2count_nurfed/lern2count_nurfed.toc
+   M /trunk/lern2count_plugins/lern2count_visor/lern2count_visor.lua
+   M /trunk/lern2count_plugins/lern2count_visor/lern2count_visor.toc
+   M /trunk/oApplication/oApplication.lua
+   M /trunk/oApplication/oApplication.toc
+   M /trunk/oRA_Assist/Bindings.xml
+   M /trunk/oRA_Durability/oRA_Durability.xml
+   M /trunk/oRA_EasyPTs/oRA_EasyPTs.lua
+   M /trunk/oRA_EasyPTs/oRA_EasyPTs.toc
+   M /trunk/oRA_EasyPTs/oRA_EasyPTsLocals.lua
+   M /trunk/oRA_EasyPTs/oRA_EasyPTsLocals_deDE.lua
+   M /trunk/oRA_EasyPTs/readme.txt
+   M /trunk/oRA_Invite/oRA_Invite.lua
+   M /trunk/oRA_Invite/oRA_Invite.toc
+   M /trunk/oRA_Invite/oRA_InviteLocals.lua
+   M /trunk/oRA_Item/oRA_Item.lua
+   M /trunk/oRA_Item/oRA_Item.toc
+   M /trunk/oRA_Item/oRA_Item.xml
+   M /trunk/oRA_Item/oRA_ItemLocals.lua
+   M /trunk/oRA_MainTank/CompostLib.lua
+   M /trunk/oRA_MainTank/oRA_MainTank.lua
+   M /trunk/oRA_MainTank/oRA_MainTank.toc
+   M /trunk/oRA_MainTank/oRA_MainTankLocals.lua
+   M /trunk/oRA_MainTankFrames/Bindings.xml
+   M /trunk/oRA_MainTankFrames/oRA_MainTankFrames.lua
+   M /trunk/oRA_MainTankFrames/oRA_MainTankFrames.toc
+   M /trunk/oRA_MainTankFrames/oRA_MainTankFrames.xml
+   M /trunk/oRA_MainTankFrames/oRA_MainTankFramesLocals.lua
+   M /trunk/oRA_Menu/Core.lua
+   M /trunk/oRA_Menu/Locals.lua
+   M /trunk/oRA_Menu/oRA_Menu.toc
+   M /trunk/oRA_RaidSay/oRA_RaidSay.lua
+   M /trunk/oRA_RaidSay/oRA_RaidSay.toc
+   M /trunk/oRA_RaidSay/oRA_RaidSayLocals.lua
+   M /trunk/oRA_Ready/oRA_Ready.lua
+   M /trunk/oRA_Ready/oRA_Ready.toc
+   M /trunk/oRA_Ready/oRA_ReadyLocals.lua
+   M /trunk/oRA_Resist/oRA_Resist.lua
+   M /trunk/oRA_Resist/oRA_Resist.toc
+   M /trunk/oRA_Resist/oRA_Resist.xml
+   M /trunk/oRA_Resist/oRA_ResistLocals.lua
+   M /trunk/oRA_Resurrection/oRA_Resurrection.lua
+   M /trunk/oRA_Resurrection/oRA_Resurrection.toc
+   M /trunk/oRA_Resurrection/oRA_Resurrection.xml
+   M /trunk/oRA_Resurrection/oRA_ResurrectionLocals.lua
+   M /trunk/oRA_Resurrection/oRA_ResurrectionLocals_deDE.lua
+   M /trunk/oRA_Resurrection/oRA_ResurrectionLocals_frFR.lua
+   M /trunk/oRA_Version/oRA_Version.lua
+   M /trunk/oRA_Version/oRA_Version.toc
+   M /trunk/oRA_Version/oRA_Version.xml
+   M /trunk/oRA_Version/oRA_VersionLocals.lua
+   M /trunk/oRA_Zone/oRA_Zone.lua
+   M /trunk/oRA_Zone/oRA_Zone.toc
+   M /trunk/oRA_Zone/oRA_Zone.xml
+   M /trunk/oRA_Zone/oRA_ZoneLocals.lua
+   M /trunk/oSkin/AOElements.lua
+   M /trunk/oSkin/AddonFrames.lua
+   M /trunk/oSkin/CharacterFrames1.lua
+   M /trunk/oSkin/CharacterFrames2.lua
+   M /trunk/oSkin/NPCFrames.lua
+   M /trunk/oSkin/UIElements1.lua
+   M /trunk/oSkin/UIElements2.lua
+   M /trunk/oSkin/options.lua
+
+Line ending bits.
+------------------------------------------------------------------------
+r12570 | mjc | 2006-10-02 00:13:59 +0100 (Mon, 02 Oct 2006) | 2 lines
+Changed paths:
+   M /trunk/HealWatch/Libs
+   M /trunk/HealthMon/libs
+   M /trunk/Hitman/libs
+   M /trunk/IFrameManager/Libs
+   M /trunk/IIK_FeignTrap
+   M /trunk/ItemizedDeductions
+   M /trunk/JostleLib
+   M /trunk/LensOfTruth
+   M /trunk/LitheTooltipDoctor/Libs
+   M /trunk/ManaPerc/Libs
+   M /trunk/MountMe/Libs
+   M /trunk/Paparazzi/libs
+   M /trunk/PartyQuestComm/libs
+   M /trunk/PlowKing/Libs
+   M /trunk/PlowKing/Libs/Ace2
+   M /trunk/Quecho/Libs
+   M /trunk/RPS/libs
+   M /trunk/Reslack/libs
+   M /trunk/SidebarCombatLog/libs
+   M /trunk/SmartRes/libs
+   M /trunk/SpecialEventsEmbed/externals
+   M /trunk/StopTheLagness/lib
+
+fixing externals
+
+------------------------------------------------------------------------
+r12391 | phyber | 2006-09-30 22:37:34 +0100 (Sat, 30 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Got rid of an if statement.
+------------------------------------------------------------------------
+r12343 | phyber | 2006-09-30 18:16:21 +0100 (Sat, 30 Sep 2006) | 3 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Even more optimized.  All locals are now only created if they are going to be used. (Missed a few before)
+- Removed some 'else's from if statements by initialising some local vars to ''
+------------------------------------------------------------------------
+r12342 | phyber | 2006-09-30 18:00:32 +0100 (Sat, 30 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- More optimizations.  The few locals that exist are now only created if we're going to process the tooltip.  Before, they were created even if we wern't.
+------------------------------------------------------------------------
+r12280 | phyber | 2006-09-30 04:35:32 +0100 (Sat, 30 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+   M /trunk/ManaPerc/ManaPercLocale-enUS.lua
+
+ManaPerc:
+- Removed some unused translations.
+------------------------------------------------------------------------
+r12279 | phyber | 2006-09-30 04:28:53 +0100 (Sat, 30 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Another small optimization.
+------------------------------------------------------------------------
+r12258 | phyber | 2006-09-29 23:06:01 +0100 (Fri, 29 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/Readme.txt
+
+ManaPerc:
+- Made a small change to the ReadMe so that a new .zip would be generated.
+------------------------------------------------------------------------
+r12148 | phyber | 2006-09-28 14:16:57 +0100 (Thu, 28 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- All locals are now on one line, since the number of locals has dropped since I started work on this.
+------------------------------------------------------------------------
+r12128 | phyber | 2006-09-27 23:56:23 +0100 (Wed, 27 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/Libs
+
+ManaPerc:
+- Fixed missing AceOO external.
+------------------------------------------------------------------------
+r12126 | phyber | 2006-09-27 23:55:02 +0100 (Wed, 27 Sep 2006) | 3 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- Added missing Libs entries to TOC.
+- Added X-Category to TOC.
+------------------------------------------------------------------------
+r12124 | phyber | 2006-09-27 23:11:57 +0100 (Wed, 27 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.lua
+
+ManaPerc:
+- Another small optimization, one local (line2costd) removed \o/
+------------------------------------------------------------------------
+r12087 | phyber | 2006-09-27 01:15:37 +0100 (Wed, 27 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- Added X-Category: Interface to the TOC.
+------------------------------------------------------------------------
+r12082 | phyber | 2006-09-26 23:12:34 +0100 (Tue, 26 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- Fixed SavedVariables being a non-existant table.
+------------------------------------------------------------------------
+r12080 | phyber | 2006-09-26 23:07:10 +0100 (Tue, 26 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/ManaPerc.toc
+
+ManaPerc:
+- Fix typo in Locale filename.
+------------------------------------------------------------------------
+r12054 | phyber | 2006-09-26 17:20:32 +0100 (Tue, 26 Sep 2006) | 2 lines
+Changed paths:
+   D /trunk/ManaPerc/MyAcePerc.lua
+   D /trunk/ManaPerc/MyAcePerc.toc
+   D /trunk/ManaPerc/MyAcePercLocale-enUS.lua
+
+ManaPerc:
+- Removed old MyAcePerc files.
+------------------------------------------------------------------------
+r12053 | phyber | 2006-09-26 17:19:44 +0100 (Tue, 26 Sep 2006) | 2 lines
+Changed paths:
+   A /trunk/ManaPerc/ManaPerc.lua
+   A /trunk/ManaPerc/ManaPerc.toc
+   A /trunk/ManaPerc/ManaPercLocale-enUS.lua
+
+ManaPerc:
+- OK, commiting files works better after I 'svn add' them.  Next time I'll learn to use 'svn rename'.
+------------------------------------------------------------------------
+r12052 | phyber | 2006-09-26 17:18:35 +0100 (Tue, 26 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/ManaPerc/Libs
+   M /trunk/ManaPerc/Readme.txt
+
+ManaPerc:
+- Renamed files, updated externals for new SVN paths.
+------------------------------------------------------------------------
+r12049 | phyber | 2006-09-26 17:04:44 +0100 (Tue, 26 Sep 2006) | 2 lines
+Changed paths:
+   A /trunk/ManaPerc (from /trunk/MyAcePerc:12048)
+   D /trunk/MyAcePerc
+
+ManaPerc:
+- Rename of MyAcePerc to ManaPerc.
+------------------------------------------------------------------------
+r12033 | phyber | 2006-09-25 21:29:08 +0100 (Mon, 25 Sep 2006) | 2 lines
+Changed paths:
+   M /trunk/MyAcePerc/MyAcePerc.lua
+
+MyAcePerc:
+- Another small optimization.  GameTooltipTextLeft2 is now called only once.
+------------------------------------------------------------------------
+r10424 | phyber | 2006-09-07 18:44:10 +0100 (Thu, 07 Sep 2006) | 3 lines
+Changed paths:
+   M /trunk/MyAcePerc/MyAcePerc.lua
+
+MyAcePerc:
+- format -> string.format
+- Clean up a few random spaces in the file to save hard drive space.  That stuff isn't cheap you know!  Uhh, wait...
+------------------------------------------------------------------------
+r10422 | phyber | 2006-09-07 18:26:23 +0100 (Thu, 07 Sep 2006) | 4 lines
+Changed paths:
+   M /trunk/MyAcePerc/Libs
+   M /trunk/MyAcePerc/MyAcePerc.lua
+   M /trunk/MyAcePerc/MyAcePerc.toc
+
+MyAcePerc:
+- Large cleanup of the tooltip processing function.
+- Set externals on Libs/
+- Added green Ace2 thingy to title in TOC.
+------------------------------------------------------------------------
+r10405 | phyber | 2006-09-07 15:36:20 +0100 (Thu, 07 Sep 2006) | 2 lines
+Changed paths:
+   A /trunk/MyAcePerc
+   A /trunk/MyAcePerc/Libs
+   A /trunk/MyAcePerc/MyAcePerc.lua
+   A /trunk/MyAcePerc/MyAcePerc.toc
+   A /trunk/MyAcePerc/MyAcePercLocale-enUS.lua
+   A /trunk/MyAcePerc/Readme.txt
+
+MyAcePerc:
+- Ace2 version of Instant's MyAcePerc.  Keeping the name since the addon doesn't exist on WoWI with this name.
+------------------------------------------------------------------------
