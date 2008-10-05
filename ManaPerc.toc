@@ -6,7 +6,7 @@
 ## Author: phyber
 ## OptionalDeps: Ace3, LibDruidMana-1.0
 ## SavedVariables: ManaPercDB
-## X-Website: http://svn.wowace.com/files/
+## X-Website: http://www.wowace.com/projects/manaperc/
 ## X-Category: Interface Enhancements
 ## X-Credit: Instant (original author)
 ## X-Embeds: Ace3, LibDruidMana-1.0
