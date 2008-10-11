@@ -93,6 +93,35 @@ end
 function ManaPerc:OnEnable()
 	self:HookScript(GameTooltip, "OnTooltipSetSpell", "ProcessOnShow")
 end
+
+-- This function is mainly needed to handle druids and their wacky power bars.
+local function isManaSpell(name)
+	local _, _, _, cost, _, ptype = GetSpellInfo(name)
+	local isMana = cost and ptype and cost > 0 and ptype == 0 and true or false
+	if isMana then
+		if isDruid then
+			-- Druids need special loving for their stupid power bars.
+			if UnitPowerType("player") ~= 0 then
+				-- We're not in caster form, we need LibDruidMana loaded to do anything.
+				if LibDruidMana then
+					-- If zero is being returned, LibDruidMana doesn't know our max mana yet
+					-- or we're doing RoS and our max mana was reduced to zero.
+					-- so, don't process the tooltip
+					if UnitManaMax("player") == 0 then
+						return false
+					end
+					return true
+				end
+			else
+				-- Caster form, we don't need LibDruidMana at all here.
+				return  true
+			end
+		else
+			return true
+		end
+	end
+	return false
+end
 --[[--------------------------------------------------------------------------------
   Main Processing
 -----------------------------------------------------------------------------------]]
@@ -103,8 +132,7 @@ function ManaPerc:ProcessOnShow(tt, ...)
 	-- If the spell costs something and is a Mana using spell...
 	-- We must check that they're not nil here too, due to Blizzard
 	-- doing something funky when setting Talents in the tooltip.
-	--if cost and ptype and cost > 0 and ptype == 0 and (UnitPowerType("player") ~= 0 and isDruid and LibDruidMana and true or false) then
-	if cost and ptype and cost > 0 and ptype == 0 then
+	if isManaSpell(name) then
 		local dttext, dctext = "", ""
 		-- Work out the percentage vs. the players total mana
 		if db.total then
