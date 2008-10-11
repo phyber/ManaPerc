@@ -103,7 +103,8 @@ function ManaPerc:ProcessOnShow(tt, ...)
 	-- If the spell costs something and is a Mana using spell...
 	-- We must check that they're not nil here too, due to Blizzard
 	-- doing something funky when setting Talents in the tooltip.
-	if cost and ptype and cost > 0 and ptype == 0 and (UnitPowerType("player") ~= 0 and isDruid and LibDruidMana and true or false) then
+	--if cost and ptype and cost > 0 and ptype == 0 and (UnitPowerType("player") ~= 0 and isDruid and LibDruidMana and true or false) then
+	if cost and ptype and cost > 0 and ptype == 0 then
 		local dttext, dctext = "", ""
 		-- Work out the percentage vs. the players total mana
 		if db.total then
