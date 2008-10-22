@@ -16,13 +16,10 @@ local L = LibStub("AceLocale-3.0"):GetLocale("ManaPerc")
 -- Some local functions/values
 local sformat = string.format
 local GetSpellInfo = GetSpellInfo
-local UnitMana = UnitMana
-local UnitManaMax = UnitManaMax
-local UnitPowerType = UnitPowerType
+local UnitPower = UnitPower
+local UnitPowerMax = UnitPowerMax
 local MANA_COST = MANA_COST
 local math_inf = 1/0
-local LibDruidMana
-local isDruid
 -- Our SV DB, we'll fill this in later
 local db
 
@@ -81,47 +78,12 @@ function ManaPerc:OnInitialize()
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("ManaPerc", GetAddOnMetadata("ManaPerc", "Title"))
 	-- Register chat command to open the options dialog
 	self:RegisterChatCommand("manaperc", function() InterfaceOptionsFrame_OpenToFrame(LibStub("AceConfigDialog-3.0").BlizOptions["ManaPerc"].frame) end)
-	-- Check if we're a druid and override UnitMana and UnitManaMax if we are.
-	LibDruidMana = LibStub("LibDruidMana-1.0", true) -- fail silently
-	isDruid = select(2, UnitClass("player")) == "DRUID" and true or false
-	if isDruid and LibDruidMana then
-		UnitMana = LibDruidMana.GetCurrentMana
-		UnitManaMax = LibDruidMana.GetMaximumMana
-	end
 end
 
 function ManaPerc:OnEnable()
 	self:HookScript(GameTooltip, "OnTooltipSetSpell", "ProcessOnShow")
 end
 
--- This function is mainly needed to handle druids and their wacky power bars.
-local function isManaSpell(name)
-	local _, _, _, cost, _, ptype = GetSpellInfo(name)
-	local isMana = cost and ptype and cost > 0 and ptype == 0 and true or false
-	if isMana then
-		if isDruid then
-			-- Druids need special loving for their stupid power bars.
-			if UnitPowerType("player") ~= 0 then
-				-- We're not in caster form, we need LibDruidMana loaded to do anything.
-				if LibDruidMana then
-					-- If zero is being returned, LibDruidMana doesn't know our max mana yet
-					-- or we're doing RoS and our max mana was reduced to zero.
-					-- so, don't process the tooltip
-					if UnitManaMax("player") == 0 then
-						return false
-					end
-					return true
-				end
-			else
-				-- Caster form, we don't need LibDruidMana at all here.
-				return  true
-			end
-		else
-			return true
-		end
-	end
-	return false
-end
 --[[--------------------------------------------------------------------------------
   Main Processing
 -----------------------------------------------------------------------------------]]
@@ -132,16 +94,16 @@ function ManaPerc:ProcessOnShow(tt, ...)
 	-- If the spell costs something and is a Mana using spell...
 	-- We must check that they're not nil here too, due to Blizzard
 	-- doing something funky when setting Talents in the tooltip.
-	if isManaSpell(name) then
+	if cost and ptype and cost > 0 and ptype == 0 then
 		local dttext, dctext = "", ""
 		-- Work out the percentage vs. the players total mana
 		if db.total then
-			local pct = cost / (UnitManaMax('player') / 100)
+			local pct = cost / (UnitPowerMax('player', 0) / 100)
 			dttext = sformat(" %s%.1f%%)", db.colour and "|cFFFFFF00(" or "(t:", pct ~= math_inf and pct or 0)
 		end
 		-- Work out the percentage vs. the players current mana
 		if db.current then
-			local pct = cost / (UnitMana('player') / 100)
+			local pct = cost / (UnitPower('player', 0) / 100)
 			dctext = sformat(" %s%.1f%%)", db.colour and "|cFF00FF00(" or "(c:", pct ~= math_inf and pct or 0)
 		end
 		-- Add the new information to the tooltip
