@@ -77,7 +77,7 @@ function ManaPerc:OnInitialize()
 	LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable("ManaPerc", getOptions)
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("ManaPerc", GetAddOnMetadata("ManaPerc", "Title"))
 	-- Register chat command to open the options dialog
-	self:RegisterChatCommand("manaperc", function() InterfaceOptionsFrame_OpenToFrame(LibStub("AceConfigDialog-3.0").BlizOptions["ManaPerc"].frame) end)
+	self:RegisterChatCommand("manaperc", function() InterfaceOptionsFrame_OpenToCategory(LibStub("AceConfigDialog-3.0").BlizOptions["ManaPerc"].frame) end)
 end
 
 function ManaPerc:OnEnable()
