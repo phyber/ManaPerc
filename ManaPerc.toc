@@ -12,9 +12,9 @@
 ## X-Credit: Instant (original author)
 ## X-Embeds: Ace3
 
-#@no-libs-strip@
+#@no-lib-strip@
 embeds.xml
-#@end-no-libs-strip@
+#@end-no-lib-strip@
 
 Locales\locales.xml
 ManaPerc.lua
