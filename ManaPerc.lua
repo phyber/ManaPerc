@@ -28,6 +28,8 @@ local function getOptions()
 	local options = {
 		type = "group",
 		name = GetAddOnMetadata("ManaPerc", "Title"),
+		get = function(info) return db[info[#info]] end,
+		set = function(info, value) db[info[#info]] = value end,
 		args = {
 			mpdesc = {
 				type = "description",
@@ -40,8 +42,6 @@ local function getOptions()
 				type = "toggle",
 				order = 2,
 				width = "full",
-				get = function() return db.total end,
-				set = function() db.total = not db.total end,
 			},
 			current = {
 				name = L["Show Current"],
@@ -49,8 +49,6 @@ local function getOptions()
 				type = "toggle",
 				order = 3,
 				width = "full",
-				get = function() return db.current end,
-				set = function() db.current = not db.current end,
 			},
 			colour = {
 				name = L["Enable Colour"],
@@ -58,8 +56,6 @@ local function getOptions()
 				type = "toggle",
 				order = 1,
 				width = "full",
-				get = function() return db.colour end,
-				set = function() db.colour = not db.colour end,
 			}
 		}
 	}
