@@ -19,6 +19,7 @@ local GetSpellInfo = GetSpellInfo
 local UnitPower = UnitPower
 local UnitPowerMax = UnitPowerMax
 local MANA_COST = MANA_COST
+local SPELL_POWER_MANA = SPELL_POWER_MANA
 local math_inf = 1/0
 -- Our SV DB, we'll fill this in later
 local db
@@ -90,16 +91,16 @@ function ManaPerc:ProcessOnShow(tt, ...)
 	-- If the spell costs something and is a Mana using spell...
 	-- We must check that they're not nil here too, due to Blizzard
 	-- doing something funky when setting Talents in the tooltip.
-	if cost and ptype and cost > 0 and ptype == 0 then
+	if cost and ptype and cost > 0 and ptype == SPELL_POWER_MANA then
 		local dttext, dctext = "", ""
 		-- Work out the percentage vs. the players total mana
 		if db.total then
-			local pct = cost / (UnitPowerMax('player', 0) / 100)
+			local pct = cost / (UnitPowerMax('player', SPELL_POWER_MANA) / 100)
 			dttext = sformat(" %s%.1f%%)", db.colour and "|cFFFFFF00(" or "(t:", pct ~= math_inf and pct or 0)
 		end
 		-- Work out the percentage vs. the players current mana
 		if db.current then
-			local pct = cost / (UnitPower('player', 0) / 100)
+			local pct = cost / (UnitPower('player', SPELL_POWER_MANA) / 100)
 			dctext = sformat(" %s%.1f%%)", db.colour and "|cFF00FF00(" or "(c:", pct ~= math_inf and pct or 0)
 		end
 		-- Add the new information to the tooltip
