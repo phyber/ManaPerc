@@ -87,24 +87,26 @@ end
 function ManaPerc:ProcessOnShow(tt, ...)
 	-- Get the name of the spell along with the cost and power type.
 	local name = tt:GetSpell()
-	local _, _, _, cost, _, ptype = GetSpellInfo(name)
-	-- If the spell costs something and is a Mana using spell...
-	-- We must check that they're not nil here too, due to Blizzard
-	-- doing something funky when setting Talents in the tooltip.
-	if cost and ptype and cost > 0 and ptype == SPELL_POWER_MANA then
-		local dttext, dctext = "", ""
-		-- Work out the percentage vs. the players total mana
-		if db.total then
-			local pct = cost / (UnitPowerMax('player', SPELL_POWER_MANA) / 100)
-			dttext = sformat(" %s%.1f%%)", db.colour and "|cFFFFFF00(" or "(t:", pct ~= math_inf and pct or 0)
+	if name then
+		local _, _, _, cost, _, ptype = GetSpellInfo(name)
+		-- If the spell costs something and is a Mana using spell...
+		-- We must check that they're not nil here too, due to Blizzard
+		-- doing something funky when setting Talents in the tooltip.
+		if cost and ptype and cost > 0 and ptype == SPELL_POWER_MANA then
+			local dttext, dctext = "", ""
+			-- Work out the percentage vs. the players total mana
+			if db.total then
+				local pct = cost / (UnitPowerMax('player', SPELL_POWER_MANA) / 100)
+				dttext = sformat(" %s%.1f%%)", db.colour and "|cFFFFFF00(" or "(t:", pct ~= math_inf and pct or 0)
+			end
+			-- Work out the percentage vs. the players current mana
+			if db.current then
+				local pct = cost / (UnitPower('player', SPELL_POWER_MANA) / 100)
+				dctext = sformat(" %s%.1f%%)", db.colour and "|cFF00FF00(" or "(c:", pct ~= math_inf and pct or 0)
+			end
+			-- Add the new information to the tooltip
+			GameTooltipTextLeft2:SetText(sformat(MANA_COST, cost)..dctext..dttext)
 		end
-		-- Work out the percentage vs. the players current mana
-		if db.current then
-			local pct = cost / (UnitPower('player', SPELL_POWER_MANA) / 100)
-			dctext = sformat(" %s%.1f%%)", db.colour and "|cFF00FF00(" or "(c:", pct ~= math_inf and pct or 0)
-		end
-		-- Add the new information to the tooltip
-		GameTooltipTextLeft2:SetText(sformat(MANA_COST, cost)..dctext..dttext)
 	end
 	-- Call the original function
 	self.hooks[GameTooltip]["OnTooltipSetSpell"](tt, ...)
