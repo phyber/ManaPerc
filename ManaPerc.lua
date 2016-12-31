@@ -94,8 +94,10 @@ local function getCost(tt)
     local text = GameTooltipTextLeft2:GetText()
     if text then
         local costString = text:match(MANA_COST_PATTERN)
-        local costNum = costString:gsub("%D", "")
-        return tonumber(costNum)
+        if costString then
+            local costNum = costString:gsub("%D", "")
+            return tonumber(costNum)
+        end
     end
     return nil
 end
