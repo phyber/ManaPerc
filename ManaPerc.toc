@@ -1,4 +1,4 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: ManaPerc
 ## Notes: Shows mana usage as a percentage in a spells tooltip.
 ## Notes-zhTW: 在法術提示訊息顯示施放法力值百分比。
