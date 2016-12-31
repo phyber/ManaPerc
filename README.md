@@ -20,14 +20,14 @@ thine enemies to smithe them, in thy glory
 
 ## Usage
 
-Command: /manaperc
+Command: `/manaperc`
 
-/manaperc ?:       Displays extra information about mypercentage
-/manaperc standby: Toggles the addon's standby mode. Standby makes the addon
-                   active or inactive, though it is still loaded.
-/manaperc total:   Toggles displaying mana cost in % of total mana
-/manaperc current: Toggles displaying mana cost in % of current mana
-/manaperc colour:  Toggles displaying colour OR t:/c:
+- /manaperc ?:       Displays extra information about mypercentage
+- /manaperc standby: Toggles the addon's standby mode. Standby makes the addon
+                     active or inactive, though it is still loaded.
+- /manaperc total:   Toggles displaying mana cost in % of total mana
+- /manaperc current: Toggles displaying mana cost in % of current mana
+- /manaperc colour:  Toggles displaying colour OR t:/c:
 
 
 ## Credits
