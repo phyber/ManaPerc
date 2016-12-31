@@ -21,6 +21,7 @@ local tonumber = tonumber
 local GetSpellInfo = GetSpellInfo
 local UnitPower = UnitPower
 local UnitPowerMax = UnitPowerMax
+local BreakUpLargeNumbers = BreakUpLargeNumbers
 local MANA_COST = MANA_COST
 local MANA_COST_PATTERN = sgsub(MANA_COST, "%%s", "([%%d.,]+)")
 local SPELL_POWER_MANA = SPELL_POWER_MANA
@@ -123,7 +124,9 @@ function ManaPerc:ProcessOnShow(tt, ...)
                 dctext = sformat(" %s%.1f%%)", db.colour and "|cFF00FF00(" or "(c:", pct ~= math_inf and pct or 0)
             end
             -- Add the new information to the tooltip
-            GameTooltipTextLeft2:SetText(sformat(MANA_COST, cost)..dctext..dttext)
+            GameTooltipTextLeft2:SetText(
+                MANA_COST:format(BreakUpLargeNumbers(cost))..dctext..dttext
+            )
         end
     end
     -- Call the original function
