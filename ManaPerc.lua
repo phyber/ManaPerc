@@ -18,7 +18,6 @@ local sformat = string.format
 local smatch = string.match
 local sgsub = string.gsub
 local tonumber = tonumber
-local GetSpellInfo = GetSpellInfo
 local UnitPower = UnitPower
 local UnitPowerMax = UnitPowerMax
 local BreakUpLargeNumbers = BreakUpLargeNumbers
