@@ -14,22 +14,19 @@ local defaults = {
 -- Locale
 local L = LibStub("AceLocale-3.0"):GetLocale("ManaPerc")
 -- Some local functions/values
-local sformat = string.format
-local smatch = string.match
-local sgsub = string.gsub
 local tonumber = tonumber
+local math_huge = math.huge
 local UnitPower = UnitPower
 local UnitPowerMax = UnitPowerMax
 local BreakUpLargeNumbers = BreakUpLargeNumbers
 local MANA_COST = MANA_COST
-local MANA_COST_PATTERN = sgsub(MANA_COST, "%%s", "([%%d.,]+)")
+local MANA_COST_PATTERN = MANA_COST:gsub("%%s", "([%%d.,]+)")
 local SPELL_POWER_MANA = SPELL_POWER_MANA
 local MANA_PERC_FORMAT = "%s%.1f%%)"
 local CURRENT_MANA_COLOUR = "|cFF00FF00("
 local CURRENT_MANA_STRING = "(c:"
 local TOTAL_MANA_COLOUR = "|cFFFFFF00("
 local TOTAL_MANA_STRING = "(t:"
-local math_inf = 1/0
 -- Our SV DB, we'll fill this in later
 local db
 
@@ -113,7 +110,7 @@ local function percentOfTotalMana(cost)
     local maxMana = UnitPowerMax('player', SPELL_POWER_MANA)
     local costPercent = cost / (maxMana / 100)
     local preamble = db.colour and TOTAL_MANA_COLOUR or TOTAL_MANA_STRING
-    local cost = costPercent ~= math_inf and costPercent or 0
+    local cost = costPercent ~= math_huge and costPercent or 0
     return MANA_PERC_FORMAT:format(preamble, cost)
 end
 
@@ -122,7 +119,7 @@ local function percentOfCurrentMana(cost)
     local currentMana = UnitPower('player', SPELL_POWER_MANA)
     local costPercent = cost / (currentMana / 100)
     local preamble = db.colour and CURRENT_MANA_COLOUR or CURRENT_MANA_STRING
-    local cost = costPercent ~= math_inf and costPercent or 0
+    local cost = costPercent ~= math_huge and costPercent or 0
     return MANA_PERC_FORMAT:format(preamble, cost)
 end
 
