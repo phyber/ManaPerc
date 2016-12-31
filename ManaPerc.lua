@@ -24,6 +24,11 @@ local BreakUpLargeNumbers = BreakUpLargeNumbers
 local MANA_COST = MANA_COST
 local MANA_COST_PATTERN = sgsub(MANA_COST, "%%s", "([%%d.,]+)")
 local SPELL_POWER_MANA = SPELL_POWER_MANA
+local MANA_PERC_FORMAT = "%s%.1f%%)"
+local CURRENT_MANA_COLOUR = "|cFF00FF00("
+local CURRENT_MANA_STRING = "(c:"
+local TOTAL_MANA_COLOUR = "|cFFFFFF00("
+local TOTAL_MANA_STRING = "(t:"
 local math_inf = 1/0
 -- Our SV DB, we'll fill this in later
 local db
@@ -74,9 +79,11 @@ function ManaPerc:OnInitialize()
     -- Grab our DB and fill in the 'db' variable
     self.db = LibStub("AceDB-3.0"):New("ManaPercDB", defaults, "Default")
     db = self.db.profile
+
     -- Register our options
     LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable("ManaPerc", getOptions)
     LibStub("AceConfigDialog-3.0"):AddToBlizOptions("ManaPerc", GetAddOnMetadata("ManaPerc", "Title"))
+
     -- Register chat command to open the options dialog
     self:RegisterChatCommand("manaperc", function()
         InterfaceOptionsFrame_OpenToCategory(GetAddOnMetadata("ManaPerc", "Title"))
@@ -101,6 +108,24 @@ local function getCost(tt)
     return nil
 end
 
+-- Work out the percentage vs. the players total mana
+local function percentOfTotalMana(cost)
+    local maxMana = UnitPowerMax('player', SPELL_POWER_MANA)
+    local costPercent = cost / (maxMana / 100)
+    local preamble = db.colour and TOTAL_MANA_COLOUR or TOTAL_MANA_STRING
+    local cost = costPercent ~= math_inf and costPercent or 0
+    return MANA_PERC_FORMAT:format(preamble, cost)
+end
+
+-- Work out the percentage vs. the players current mana
+local function percentOfCurrentMana(cost)
+    local currentMana = UnitPower('player', SPELL_POWER_MANA)
+    local costPercent = cost / (currentMana / 100)
+    local preamble = db.colour and CURRENT_MANA_COLOUR or CURRENT_MANA_STRING
+    local cost = costPercent ~= math_inf and costPercent or 0
+    return MANA_PERC_FORMAT:format(preamble, cost)
+end
+
 --[[---------------------------------------------------------------------------
   Main Processing
 -----------------------------------------------------------------------------]]
@@ -114,16 +139,14 @@ function ManaPerc:ProcessOnShow(tt, ...)
         -- doing something funky when setting Talents in the tooltip.
         if cost and cost > 0 then
             local dttext, dctext = "", ""
-            -- Work out the percentage vs. the players total mana
             if db.total then
-                local pct = cost / (UnitPowerMax('player', SPELL_POWER_MANA) / 100)
-                dttext = sformat(" %s%.1f%%)", db.colour and "|cFFFFFF00(" or "(t:", pct ~= math_inf and pct or 0)
+                dttext = percentOfTotalMana(cost)
             end
-            -- Work out the percentage vs. the players current mana
+
             if db.current then
-                local pct = cost / (UnitPower('player', SPELL_POWER_MANA) / 100)
-                dctext = sformat(" %s%.1f%%)", db.colour and "|cFF00FF00(" or "(c:", pct ~= math_inf and pct or 0)
+                dctext = percentOfCurrentMana(cost)
             end
+
             -- Add the new information to the tooltip
             GameTooltipTextLeft2:SetText(
                 MANA_COST:format(BreakUpLargeNumbers(cost))..dctext..dttext
