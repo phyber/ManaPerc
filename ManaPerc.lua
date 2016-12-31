@@ -15,10 +15,14 @@ local defaults = {
 local L = LibStub("AceLocale-3.0"):GetLocale("ManaPerc")
 -- Some local functions/values
 local sformat = string.format
+local smatch = string.match
+local sgsub = string.gsub
+local tonumber = tonumber
 local GetSpellInfo = GetSpellInfo
 local UnitPower = UnitPower
 local UnitPowerMax = UnitPowerMax
 local MANA_COST = MANA_COST
+local MANA_COST_PATTERN = sgsub(MANA_COST, "%%s", "([%%d.,]+)")
 local SPELL_POWER_MANA = SPELL_POWER_MANA
 local math_inf = 1/0
 -- Our SV DB, we'll fill this in later
@@ -81,6 +85,17 @@ function ManaPerc:OnEnable()
 	self:HookScript(GameTooltip, "OnTooltipSetSpell", "ProcessOnShow")
 end
 
+local function getCost(tt)
+    local line = _G["GameTooltipTextLeft2"]
+    local text = line:GetText()
+    if text then
+        local costString = text:match(MANA_COST_PATTERN)
+        local costNum = costString:gsub("%D", "")
+        return tonumber(costNum)
+    end
+    return nil
+end
+
 --[[--------------------------------------------------------------------------------
   Main Processing
 -----------------------------------------------------------------------------------]]
@@ -88,11 +103,11 @@ function ManaPerc:ProcessOnShow(tt, ...)
 	-- Get the name of the spell along with the cost and power type.
 	local name = tt:GetSpell()
 	if name then
-		local _, _, _, cost, _, ptype = GetSpellInfo(name)
+        local cost = getCost(tt)
 		-- If the spell costs something and is a Mana using spell...
 		-- We must check that they're not nil here too, due to Blizzard
 		-- doing something funky when setting Talents in the tooltip.
-		if cost and ptype and cost > 0 and ptype == SPELL_POWER_MANA then
+		if cost and cost > 0 then
 			local dttext, dctext = "", ""
 			-- Work out the percentage vs. the players total mana
 			if db.total then
