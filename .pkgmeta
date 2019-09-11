@@ -14,4 +14,4 @@ externals:
 
 manual-changelog:
     filename: 'CHANGELOG.md'
-    markup: 'markdown'
+    markup-type: 'markdown'
