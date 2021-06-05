@@ -1,9 +1,7 @@
-#@retail@
-## Interface: 80205
-#@end-retail@
-#@non-retail@
-# ## Interface: 11302
-#@end-non-retail@
+## Interface: 90005
+## Interface-Retail: 90005
+## Interface-Classic: 11307
+## Interface-BCC: 20501
 ## Title: ManaPerc
 ## Notes: Shows mana usage as a percentage in a spells tooltip.
 ## Notes-zhTW: 在法術提示訊息顯示施放法力值百分比。
